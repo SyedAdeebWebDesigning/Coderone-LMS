@@ -11,7 +11,7 @@
 			<div class="form-container">
 				<!-- Login Form -->
 				<div class="form-box login-box">
-					<h2>Login</h2>
+					<h2>CoderOne LMS Login</h2>
 					<form action="/login" method="POST">
 						<input
 							type="text"
@@ -26,13 +26,14 @@
 						<button type="submit">Login</button>
 					</form>
 					<p>
-						Don't have an account? <button id="show-register">Register</button>
+						Don't have an account?
+						<a style="cursor: pointer" id="show-register">Register</a>
 					</p>
 				</div>
 
 				<!-- Register Form -->
 				<div class="form-box register-box">
-					<h2>Register</h2>
+					<h2>CoderOne LMS Register</h2>
 					<form action="/register" method="POST">
 						<input
 							type="text"
@@ -46,7 +47,10 @@
 							required />
 						<button type="submit">Register</button>
 					</form>
-					<p>Already have an account? <button id="show-login">Login</button></p>
+					<p>
+						Already have an account?
+						<a id="show-login" style="cursor: pointer">Login</a>
+					</p>
 				</div>
 			</div>
 		</div>
