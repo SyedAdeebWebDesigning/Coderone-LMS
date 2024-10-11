@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Available Courses</title>
+		<link rel="stylesheet" href="/css/style.css" />
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f0f4f8;
+				margin: 0;
+				display: flex;
+				flex-direction: column;
+				padding: 20px;
+				color: #333;
+			}
+
+			h1 {
+				color: #007bff;
+				margin-bottom: 20px;
+			}
+
+			ul {
+				list-style-type: none;
+				padding: 0;
+			}
+
+			li {
+				background: white;
+				border-radius: 8px;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+				margin-bottom: 15px;
+				padding: 15px;
+			}
+
+			h3 {
+				margin: 0 0 10px;
+			}
+
+			p {
+				margin: 0 0 10px;
+			}
+
+			button {
+				padding: 10px 15px;
+				background-color: #007bff;
+				color: white;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+				font-size: 16px;
+			}
+
+			a {
+				display: inline-block;
+				margin-top: 20px;
+				color: #007bff;
+				text-decoration: none;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Available Courses for <%= user.username %></h1>
+		<ul>
+			<% availableCourses.forEach(course => { %>
+			<li>
+				<h3><%= course.title %></h3>
+				<p><%= course.description %></p>
+				<form action="/enroll" method="POST">
+					<input type="hidden" name="courseId" value="<%= course._id %>" />
+					<button type="submit">Enroll</button>
+				</form>
+			</li>
+			<% }) %>
+		</ul>
+		<a href="/dashboard">Back to Dashboard</a>
+	</body>
+</html>

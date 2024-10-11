@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Student Dashboard</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				margin: 0;
+				padding: 20px;
+				background-color: #f0f4f8;
+				color: #333;
+			}
+
+			h1,
+			h2 {
+				color: #007bff;
+			}
+
+			h1 {
+				margin-bottom: 20px;
+			}
+
+			h2 {
+				margin-top: 30px;
+				color: #0056b3;
+			}
+
+			ul {
+				list-style-type: none;
+				padding: 0;
+			}
+
+			li {
+				background: white;
+				border-radius: 8px;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+				margin-bottom: 15px;
+				padding: 15px;
+				transition: box-shadow 0.3s;
+			}
+
+			li:hover {
+				box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+			}
+
+			h3 {
+				margin: 0 0 10px;
+				color: #333;
+			}
+
+			p {
+				margin: 0 0 10px;
+				color: #666;
+			}
+
+			button {
+				padding: 10px 15px;
+				background-color: #007bff;
+				color: white;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+				font-size: 16px;
+				transition: background-color 0.3s, transform 0.2s;
+			}
+
+			button:hover {
+				background-color: #0056b3;
+				transform: scale(1.05);
+			}
+
+			button[disabled] {
+				background-color: #6c757d; /* Grey color for disabled button */
+				cursor: not-allowed;
+			}
+
+			a {
+				display: inline-block;
+				margin-top: 20px;
+				color: #007bff;
+				text-decoration: none;
+				font-weight: bold;
+			}
+
+			a:hover {
+				text-decoration: underline;
+			}
+
+			/* Dashboard Specific Styles */
+			.dashboard {
+				background-color: #fff;
+				border-radius: 8px;
+				padding: 20px;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			}
+
+			.dashboard h2 {
+				margin-top: 0;
+			}
+
+			.btn-enroll {
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="dashboard">
+			<h1>Welcome, <%= user.username %> (Student)</h1>
+
+			<h2>Your Enrolled Courses</h2>
+			<ul>
+				<% courses.forEach(course => { %>
+				<li>
+					<h3><%= course.title %></h3>
+					<p><%= course.description %></p>
+				</li>
+				<% }) %>
+			</ul>
+
+			<h2>Available Courses</h2>
+			<ul>
+				<% allCourses.forEach(course => { %> <% if
+				(!user.courses.includes(course._id)) { %>
+				<li>
+					<h3><%= course.title %></h3>
+					<p><%= course.description %></p>
+					<form action="/enroll" method="POST" class="btn-enroll">
+						<input type="hidden" name="courseId" value="<%= course._id %>" />
+						<button type="submit">Enroll</button>
+					</form>
+				</li>
+				<% } %> <% }) %>
+			</ul>
+
+			<a href="/logout">Logout</a>
+		</div>
+	</body>
+</html>

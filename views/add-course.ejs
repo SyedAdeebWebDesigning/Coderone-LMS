@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Add Course</title>
+		<link rel="stylesheet" href="/css/style.css" />
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f0f4f8;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				height: 100vh;
+				margin: 0;
+				color: #333;
+			}
+
+			h1 {
+				margin-bottom: 20px;
+				color: #007bff;
+			}
+
+			form {
+				background: white;
+				padding: 20px;
+				border-radius: 10px;
+				box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+				width: 300px;
+				display: flex;
+				flex-direction: column;
+			}
+
+			label {
+				margin-bottom: 5px;
+				font-weight: bold;
+			}
+
+			input[type="text"],
+			textarea {
+				padding: 10px;
+				margin-bottom: 15px;
+				border: 1px solid #ddd;
+				border-radius: 5px;
+				font-size: 14px;
+				transition: border-color 0.3s;
+			}
+
+			input[type="text"]:focus,
+			textarea:focus {
+				border-color: #007bff;
+				outline: none;
+			}
+
+			button {
+				padding: 10px;
+				background-color: #007bff;
+				color: white;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+				font-size: 16px;
+				transition: background-color 0.3s;
+			}
+
+			button:hover {
+				background-color: #0056b3;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Add New Course</h1>
+		<form action="/add-course" method="POST">
+			<label for="title">Course Title:</label>
+			<input type="text" id="title" name="title" required />
+
+			<label for="description">Description:</label>
+			<textarea
+				id="description"
+				name="description"
+				rows="4"
+				required></textarea>
+
+			<label for="content">Content:</label>
+			<textarea id="content" name="content" rows="4" required></textarea>
+
+			<button type="submit">Add Course</button>
+		</form>
+	</body>
+</html>
